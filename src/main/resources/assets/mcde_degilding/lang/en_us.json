@@ -1,0 +1,11 @@
+{
+  "block.mcde_degilding.degilding_table": "Degilding Table",
+  "screen.mcde_degilding.select_gilding": "Select gilding to remove",
+  "screen.mcde_degilding.no_gilding": "Insert an item with MCDE gilding",
+  "screen.mcde_degilding.remove_tooltip": "Consume 16 iron ingots to remove gilding: %s",
+  "screen.mcde_degilding.item_slot": "Item",
+  "screen.mcde_degilding.material_slot": "Material",
+  "screen.mcde_degilding.iron_cost": "Material: Iron %2$s / %1$s",
+  "screen.mcde_degilding.need_iron": "Requires %s x Iron Ingot",
+  "screen.mcde_degilding.confirm_remove": "Click again to confirm removal"
+}

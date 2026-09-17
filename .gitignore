@@ -1,0 +1,15 @@
+.gradle/
+build/
+release/
+art/
+run/
+out/
+.idea/
+*.iml
+libs/*.jar
+libs/*.zip
+/.gradle-8.10.1/
+/.gradle-8.10.1-bin.zip
+/.mcde-1.20-repository/
+/.mcde-1.20-source/
+/MCDE-v1.6.4-1.20.zip

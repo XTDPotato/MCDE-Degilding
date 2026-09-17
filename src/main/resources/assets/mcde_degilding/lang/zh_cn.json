@@ -1,0 +1,11 @@
+{
+  "block.mcde_degilding.degilding_table": "褪金台",
+  "screen.mcde_degilding.select_gilding": "选择要褪去的镀金词条",
+  "screen.mcde_degilding.no_gilding": "放入带有 MCDE 镀金词条的物品",
+  "screen.mcde_degilding.remove_tooltip": "消耗 16 个铁锭，移除镀金词条：%s",
+  "screen.mcde_degilding.item_slot": "装备",
+  "screen.mcde_degilding.material_slot": "材料",
+  "screen.mcde_degilding.iron_cost": "材料：铁锭 %2$s / %1$s",
+  "screen.mcde_degilding.need_iron": "需要 %s x 铁锭",
+  "screen.mcde_degilding.confirm_remove": "再次点击确认褪去此镀金词条"
+}

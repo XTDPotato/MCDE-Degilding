@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mcde_degilding:block/degilding_table"
+    }
+  }
+}

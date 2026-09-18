@@ -60,6 +60,15 @@ MCDE Degilding is an add-on for
 BackupCup. Download and install the matching MCDE release before using this
 mod.
 
+## Mining and Drops
+
+The Degilding Table can be mined with an empty hand or any tool and always
+drops itself outside of explosions. It is tagged as an axe-minable block.
+
+- Empty hand or non-axe tool: about 5 seconds
+- Any axe: about 2 seconds
+- Breaking the table also drops its stored equipment and iron ingots
+
 ## Project Credits
 
 - Development style: Vibe Coding

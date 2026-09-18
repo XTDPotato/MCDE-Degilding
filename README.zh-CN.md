@@ -52,6 +52,14 @@ MCDE 褪金台是 BackupCup 的
 [MC Dungeons: Enchanting（MCDE）](https://github.com/BackupCup/MCDE)
 附属模组。使用前请下载并安装与游戏版本对应的 MCDE。
 
+## 挖掘与掉落
+
+褪金台可使用空手或任何工具挖掘，并会正常掉落自身。它被标记为可用斧头挖掘的方块。
+
+- 空手或非斧头工具：约 5 秒
+- 任意斧头：约 2 秒
+- 破坏褪金台时，还会掉落其中保存的装备与铁锭
+
 ## 项目署名
 
 - 开发方式：Vibe Coding

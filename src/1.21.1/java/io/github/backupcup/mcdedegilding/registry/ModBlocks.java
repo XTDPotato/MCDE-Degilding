@@ -19,8 +19,7 @@ public final class ModBlocks {
         McdeDegilding.id("degilding_table"),
         new DegildingTableBlock(AbstractBlock.Settings.create()
             .mapColor(MapColor.GOLD)
-            .requiresTool()
-            .strength(3.0F, 6.0F)
+            .strength(1.0F, 6.0F)
             .sounds(BlockSoundGroup.METAL))
     );
 

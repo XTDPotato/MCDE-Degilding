@@ -3,12 +3,15 @@
   "id": "mcde_degilding",
   "version": "${version}",
   "name": "MCDE Degilding",
-  "description": "Adds a table for removing selected MCDE gilded enchantments.",
+  "description": "Adds a table for removing selected MCDE gilded enchantments. Requires MCDE: https://github.com/BackupCup/MCDE",
   "authors": [
     "MCDE Degilding Contributors"
   ],
   "license": "MIT",
   "icon": "assets/mcde_degilding/icon.png",
+  "custom": {
+    "mcde_project": "https://github.com/BackupCup/MCDE"
+  },
   "environment": "*",
   "entrypoints": {
     "main": [

@@ -46,6 +46,12 @@ mcde-1.6.4-1.21.jar
 
 本模组仅支持 Fabric，不适用于 NeoForge。它是附属模组，不包含 MCDE 自身的附魔、物品或方块，因此仍需要安装对应版本的原版 MCDE JAR。
 
+## MCDE 前置模组
+
+MCDE 褪金台是 BackupCup 的
+[MC Dungeons: Enchanting（MCDE）](https://github.com/BackupCup/MCDE)
+附属模组。使用前请下载并安装与游戏版本对应的 MCDE。
+
 ## 项目署名
 
 - 开发方式：Vibe Coding

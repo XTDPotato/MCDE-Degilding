@@ -53,6 +53,13 @@ This is Fabric-only and does not run in NeoForge. It is an add-on, so it does
 not bundle MCDE's own enchantments, items, or blocks; the matching original
 MCDE JAR must also be installed.
 
+## MCDE Dependency
+
+MCDE Degilding is an add-on for
+[MC Dungeons: Enchanting (MCDE)](https://github.com/BackupCup/MCDE) by
+BackupCup. Download and install the matching MCDE release before using this
+mod.
+
 ## Project Credits
 
 - Development style: Vibe Coding

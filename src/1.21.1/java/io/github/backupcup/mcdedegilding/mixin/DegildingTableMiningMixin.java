@@ -4,6 +4,7 @@ import io.github.backupcup.mcdedegilding.registry.ModBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -29,6 +30,19 @@ abstract class DegildingTableMiningMixin {
             return;
         }
 
-        cir.setReturnValue(player.getMainHandStack().isIn(ItemTags.AXES) ? 0.025F : 0.01F);
+        var tool = player.getMainHandStack();
+        if (tool.isOf(Items.NETHERITE_PICKAXE)) {
+            cir.setReturnValue(0.1F);
+        } else if (tool.isOf(Items.DIAMOND_PICKAXE)) {
+            cir.setReturnValue(1.0F / 15.0F);
+        } else if (tool.isOf(Items.IRON_PICKAXE)) {
+            cir.setReturnValue(0.05F);
+        } else if (tool.isOf(Items.STONE_PICKAXE)) {
+            cir.setReturnValue(1.0F / 30.0F);
+        } else if (tool.isIn(ItemTags.PICKAXES)) {
+            cir.setReturnValue(0.025F);
+        } else {
+            cir.setReturnValue(1.0F / 60.0F);
+        }
     }
 }

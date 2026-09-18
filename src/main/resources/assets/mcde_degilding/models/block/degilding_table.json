@@ -8,8 +8,9 @@
   },
   "elements": [
     {
+      "name": "dark_pedestal",
       "from": [0, 0, 0],
-      "to": [16, 10, 16],
+      "to": [16, 5, 16],
       "faces": {
         "down": { "texture": "#base" },
         "up": { "texture": "#base" },
@@ -20,8 +21,71 @@
       }
     },
     {
-      "from": [1, 10, 1],
-      "to": [15, 13, 15],
+      "name": "outer_rune_frame",
+      "from": [2, 5, 2],
+      "to": [14, 7, 14],
+      "faces": {
+        "down": { "texture": "#crystal" },
+        "up": { "texture": "#crystal" },
+        "north": { "texture": "#crystal" },
+        "south": { "texture": "#crystal" },
+        "west": { "texture": "#crystal" },
+        "east": { "texture": "#crystal" }
+      }
+    },
+    {
+      "name": "inner_dark_panel",
+      "from": [4, 6.5, 4],
+      "to": [12, 8, 12],
+      "faces": {
+        "down": { "texture": "#base" },
+        "up": { "texture": "#base" },
+        "north": { "texture": "#base" },
+        "south": { "texture": "#base" },
+        "west": { "texture": "#base" },
+        "east": { "texture": "#base" }
+      }
+    },
+    {
+      "name": "crossing_rune_a",
+      "from": [5, 8, 5],
+      "to": [11, 9, 11],
+      "rotation": {
+        "angle": 45,
+        "axis": "y",
+        "origin": [8, 8, 8]
+      },
+      "faces": {
+        "down": { "texture": "#crystal" },
+        "up": { "texture": "#crystal" },
+        "north": { "texture": "#crystal" },
+        "south": { "texture": "#crystal" },
+        "west": { "texture": "#crystal" },
+        "east": { "texture": "#crystal" }
+      }
+    },
+    {
+      "name": "crossing_rune_b",
+      "from": [5, 9, 5],
+      "to": [11, 10, 11],
+      "rotation": {
+        "angle": -45,
+        "axis": "y",
+        "origin": [8, 9, 8]
+      },
+      "faces": {
+        "down": { "texture": "#crystal" },
+        "up": { "texture": "#crystal" },
+        "north": { "texture": "#crystal" },
+        "south": { "texture": "#crystal" },
+        "west": { "texture": "#crystal" },
+        "east": { "texture": "#crystal" }
+      }
+    },
+    {
+      "name": "golden_core",
+      "from": [6.5, 10, 6.5],
+      "to": [9.5, 12, 9.5],
       "faces": {
         "down": { "texture": "#gold" },
         "up": { "texture": "#gold" },
@@ -32,47 +96,49 @@
       }
     },
     {
-      "from": [4, 13, 4],
-      "to": [12, 14, 12],
+      "name": "golden_core_cap",
+      "from": [7, 12, 7],
+      "to": [9, 13, 9],
       "faces": {
-        "down": { "texture": "#crystal" },
-        "up": { "texture": "#crystal" },
-        "north": { "texture": "#crystal" },
-        "south": { "texture": "#crystal" },
-        "west": { "texture": "#crystal" },
-        "east": { "texture": "#crystal" }
+        "down": { "texture": "#gold" },
+        "up": { "texture": "#gold" },
+        "north": { "texture": "#gold" },
+        "south": { "texture": "#gold" },
+        "west": { "texture": "#gold" },
+        "east": { "texture": "#gold" }
       }
     }
   ],
   "display": {
+    "gui": {
+      "rotation": [30, 135, 0],
+      "translation": [0, 1, 0],
+      "scale": [0.72, 0.72, 0.72]
+    },
     "thirdperson_righthand": {
       "rotation": [75, 45, 0],
       "translation": [0, 2.5, 0],
-      "scale": [0.375, 0.375, 0.375]
+      "scale": [0.4, 0.4, 0.4]
     },
     "thirdperson_lefthand": {
       "rotation": [75, 45, 0],
       "translation": [0, 2.5, 0],
-      "scale": [0.375, 0.375, 0.375]
+      "scale": [0.4, 0.4, 0.4]
     },
     "firstperson_righthand": {
       "rotation": [0, 45, 0],
-      "scale": [0.4, 0.4, 0.4]
+      "scale": [0.42, 0.42, 0.42]
     },
     "firstperson_lefthand": {
       "rotation": [0, 225, 0],
-      "scale": [0.4, 0.4, 0.4]
+      "scale": [0.42, 0.42, 0.42]
     },
     "ground": {
       "translation": [0, 3, 0],
-      "scale": [0.25, 0.25, 0.25]
-    },
-    "gui": {
-      "rotation": [30, 135, 0],
-      "scale": [0.625, 0.625, 0.625]
+      "scale": [0.3, 0.3, 0.3]
     },
     "fixed": {
-      "scale": [0.5, 0.5, 0.5]
+      "scale": [0.58, 0.58, 0.58]
     }
   }
 }

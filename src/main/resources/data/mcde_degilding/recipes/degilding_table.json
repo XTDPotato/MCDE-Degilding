@@ -1,12 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "PPP",
-    "PAP",
-    "PPP"
+    " A ",
+    "DDD"
   ],
   "key": {
-    "P": {
+    "D": {
       "item": "minecraft:deepslate"
     },
     "A": {

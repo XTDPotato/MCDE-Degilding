@@ -1,0 +1,28 @@
+{
+  "schema_version": "normify-static/1",
+  "project": "mcde-degilding",
+  "revision": "970658398c9f9ef06cd53a71c5542f4416e9e79e",
+  "apis": [
+    { "module": "mcde-degilding.build.targets", "key": "file:gradle:target-minecraft" },
+    { "module": "mcde-degilding.bootstrap.common", "key": "file:fabric:main-initializer" },
+    { "module": "mcde-degilding.bootstrap.client", "key": "file:fabric:client-initializer" },
+    { "module": "mcde-degilding.bootstrap.registries.blocks", "key": "file:registry:block-mcde-degilding-degilding-table" },
+    { "module": "mcde-degilding.bootstrap.registries.block-entities", "key": "file:registry:block-entity-mcde-degilding-degilding-table" },
+    { "module": "mcde-degilding.bootstrap.registries.screen-handlers", "key": "file:registry:screen-handler-mcde-degilding-degilding-table" },
+    { "module": "mcde-degilding.gameplay.table.block", "key": "file:minecraft:block-use-degilding-table" },
+    { "module": "mcde-degilding.gameplay.table.block", "key": "file:minecraft:block-shape-degilding-table" },
+    { "module": "mcde-degilding.gameplay.table.storage", "key": "file:minecraft:block-entity-inventory-degilding-table" },
+    { "module": "mcde-degilding.gameplay.mining", "key": "file:mixin:degilding-table-breaking-delta" },
+    { "module": "mcde-degilding.interface.handler.slots", "key": "file:mcde:list-gilded-enchantments" },
+    { "module": "mcde-degilding.interface.handler.transaction", "key": "file:minecraft:screen-button-remove-gilding" },
+    { "module": "mcde-degilding.interface.handler.lifecycle", "key": "file:minecraft:reset-pending-degilding" },
+    { "module": "mcde-degilding.interface.client.rendering", "key": "file:minecraft:degilding-screen-draw" },
+    { "module": "mcde-degilding.interface.client.interaction", "key": "file:minecraft:degilding-screen-click-entry" },
+    { "module": "mcde-degilding.content.data.recipe", "key": "file:minecraft:recipe-degilding-table" },
+    { "module": "mcde-degilding.content.data.drops", "key": "file:minecraft:loot-degilding-table" },
+    { "module": "mcde-degilding.content.assets.models", "key": "file:minecraft:model-degilding-table" },
+    { "module": "mcde-degilding.content.assets.gui", "key": "file:minecraft:gui-texture-degilding-table" },
+    { "module": "mcde-degilding.content.assets.localization", "key": "file:minecraft:lang-mcde-degilding" },
+    { "module": "mcde-degilding.documentation", "key": "file:docs:project-description" }
+  ]
+}

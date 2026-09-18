@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "mcde-degilding.content",
+  "mode": "groups",
+  "order": ["mcde-degilding.content.data", "mcde-degilding.content.assets", "mcde-degilding.content.metadata"],
+  "groups": [
+    { "id": "game-data", "title": { "zh": "游戏数据", "en": "Game data" }, "children": ["mcde-degilding.content.data"] },
+    { "id": "client-assets", "title": { "zh": "客户端资产", "en": "Client assets" }, "children": ["mcde-degilding.content.assets"] },
+    { "id": "loader", "title": { "zh": "加载配置", "en": "Loader configuration" }, "children": ["mcde-degilding.content.metadata"] }
+  ],
+  "reading": { "zh": "数据决定配方和掉落，资产负责呈现，元数据连接 Fabric 与 Mixin。", "en": "Data determines recipes and drops, assets handle presentation, and metadata connects Fabric and Mixins." }
+}

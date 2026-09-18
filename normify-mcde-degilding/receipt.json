@@ -1,0 +1,19 @@
+{
+  "schema_version": "normify-static/1",
+  "project": "mcde-degilding",
+  "revision": "970658398c9f9ef06cd53a71c5542f4416e9e79e",
+  "generated_at": "2026-09-18T15:33:02Z",
+  "generator": "Codex static Normify-compatible generator",
+  "native_normify_runtime": "unavailable in this Codex workspace",
+  "validation": {
+    "status": "passed",
+    "checks": [
+      "module ids are unique",
+      "parents resolve to a module",
+      "source paths exist",
+      "leaf modules declare APIs",
+      "dependency targets resolve to leaf modules",
+      "module dependency graph is acyclic"
+    ]
+  }
+}

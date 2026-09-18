@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "mcde-degilding.bootstrap",
+  "mode": "layers",
+  "order": [
+    "mcde-degilding.bootstrap.common",
+    "mcde-degilding.bootstrap.client",
+    "mcde-degilding.bootstrap.registries"
+  ],
+  "reading": { "zh": "主端和客户端入口分别启动，再连接到共享的运行时注册表。", "en": "Common and client entries start separately, then connect to shared runtime registries." }
+}

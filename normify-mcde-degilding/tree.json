@@ -1,0 +1,106 @@
+{
+  "schema_version": "normify-static/1",
+  "project": "mcde-degilding",
+  "repository": "https://github.com/XTDPotato/MCDE-Degilding",
+  "revision": "970658398c9f9ef06cd53a71c5542f4416e9e79e",
+  "generated_at": "2026-09-18T15:33:02Z",
+  "module_count": 34,
+  "leaf_count": 21,
+  "root": {
+    "id": "mcde-degilding",
+    "name": { "zh": "MCDE 褪金台", "en": "MCDE Degilding" },
+    "children": [
+      {
+        "id": "mcde-degilding.build",
+        "name": { "zh": "构建", "en": "Build" },
+        "children": ["mcde-degilding.build.targets"]
+      },
+      {
+        "id": "mcde-degilding.bootstrap",
+        "name": { "zh": "启动与注册", "en": "Bootstrap and registration" },
+        "children": [
+          "mcde-degilding.bootstrap.common",
+          "mcde-degilding.bootstrap.client",
+          {
+            "id": "mcde-degilding.bootstrap.registries",
+            "children": [
+              "mcde-degilding.bootstrap.registries.blocks",
+              "mcde-degilding.bootstrap.registries.block-entities",
+              "mcde-degilding.bootstrap.registries.screen-handlers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mcde-degilding.gameplay",
+        "name": { "zh": "游戏玩法", "en": "Gameplay" },
+        "children": [
+          {
+            "id": "mcde-degilding.gameplay.table",
+            "children": [
+              "mcde-degilding.gameplay.table.block",
+              "mcde-degilding.gameplay.table.storage"
+            ]
+          },
+          "mcde-degilding.gameplay.mining"
+        ]
+      },
+      {
+        "id": "mcde-degilding.interface",
+        "name": { "zh": "褪金界面", "en": "Degilding interface" },
+        "children": [
+          {
+            "id": "mcde-degilding.interface.handler",
+            "children": [
+              "mcde-degilding.interface.handler.slots",
+              "mcde-degilding.interface.handler.transaction",
+              "mcde-degilding.interface.handler.lifecycle"
+            ]
+          },
+          {
+            "id": "mcde-degilding.interface.client",
+            "children": [
+              "mcde-degilding.interface.client.rendering",
+              "mcde-degilding.interface.client.interaction"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mcde-degilding.content",
+        "name": { "zh": "内容与资源", "en": "Content and resources" },
+        "children": [
+          {
+            "id": "mcde-degilding.content.data",
+            "children": [
+              "mcde-degilding.content.data.recipe",
+              "mcde-degilding.content.data.drops"
+            ]
+          },
+          {
+            "id": "mcde-degilding.content.assets",
+            "children": [
+              "mcde-degilding.content.assets.models",
+              "mcde-degilding.content.assets.textures",
+              "mcde-degilding.content.assets.gui",
+              "mcde-degilding.content.assets.localization"
+            ]
+          },
+          "mcde-degilding.content.metadata"
+        ]
+      },
+      "mcde-degilding.documentation"
+    ]
+  },
+  "edges": [
+    ["mcde-degilding.bootstrap.common", "mcde-degilding.bootstrap.registries.blocks"],
+    ["mcde-degilding.bootstrap.common", "mcde-degilding.bootstrap.registries.block-entities"],
+    ["mcde-degilding.bootstrap.common", "mcde-degilding.bootstrap.registries.screen-handlers"],
+    ["mcde-degilding.bootstrap.client", "mcde-degilding.interface.client.rendering"],
+    ["mcde-degilding.gameplay.table.block", "mcde-degilding.gameplay.table.storage"],
+    ["mcde-degilding.gameplay.table.storage", "mcde-degilding.interface.handler.slots"],
+    ["mcde-degilding.interface.client.interaction", "mcde-degilding.interface.handler.transaction"],
+    ["mcde-degilding.interface.client.interaction", "mcde-degilding.interface.handler.lifecycle"],
+    ["mcde-degilding.content.metadata", "mcde-degilding.gameplay.mining"]
+  ]
+}

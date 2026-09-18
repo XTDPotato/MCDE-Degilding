@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCDE Degilding Architecture</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --canvas: #141616;
+      --panel: #1d2020;
+      --panel-strong: #262a2a;
+      --line: #3c4642;
+      --text: #edf4ee;
+      --muted: #aebbb2;
+      --mint: #73d6ae;
+      --gold: #dfb462;
+      --violet: #b69adf;
+      --danger: #e48f8f;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 760px;
+      background: var(--canvas);
+      color: var(--text);
+      font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      background: #1a1d1d;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: 18px; font-weight: 650; letter-spacing: 0; }
+    header p { color: var(--muted); font-size: 12px; }
+    main { display: grid; grid-template-columns: 330px minmax(0, 1fr); min-height: calc(100vh - 62px); }
+    nav { border-right: 1px solid var(--line); padding: 16px 12px; background: #191c1c; }
+    .tree-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin: 0 8px 10px; }
+    .tree { display: grid; gap: 2px; }
+    .node {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 30px;
+      padding: 5px 8px;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+    }
+    .node:hover { background: #252a28; }
+    .node.active { background: #294137; color: #eafff2; }
+    .node .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--violet); margin-right: 8px; flex: 0 0 auto; }
+    .node.leaf .dot { background: var(--mint); }
+    .node .code { color: var(--muted); font-size: 11px; margin-left: auto; }
+    section { padding: 28px; overflow: auto; }
+    .eyebrow { color: var(--gold); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    #title { font-size: 28px; line-height: 1.15; margin-bottom: 8px; }
+    #english { max-width: 860px; color: var(--muted); font-size: 15px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .chip { padding: 3px 8px; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); font-size: 12px; }
+    .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; margin: 24px 0; }
+    .flow-card { min-height: 94px; padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+    .flow-card strong { display: block; color: var(--mint); margin-bottom: 4px; }
+    .flow-card span { color: var(--muted); font-size: 12px; }
+    .detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .65fr); gap: 16px; }
+    .box { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); padding: 16px; }
+    h2 { font-size: 14px; margin-bottom: 10px; }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 5px 0; color: var(--muted); }
+    code { color: #d8e6dd; font-family: Consolas, monospace; font-size: 12px; }
+    .edge { display: flex; align-items: center; gap: 8px; margin: 8px 0; color: var(--muted); font-size: 12px; }
+    .edge::before { content: "→"; color: var(--gold); font-size: 16px; }
+    .status { color: var(--mint); }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>MCDE Degilding Architecture</h1>
+      <p>Normify-compatible static snapshot · revision <code>9706583</code></p>
+    </div>
+    <p class="status">34 modules · 21 leaf APIs · 0 structural errors</p>
+  </header>
+  <main>
+    <nav>
+      <p class="tree-label">Module Tree</p>
+      <div id="tree" class="tree"></div>
+    </nav>
+    <section>
+      <p class="eyebrow" id="path"></p>
+      <h2 id="title"></h2>
+      <p id="english"></p>
+      <div id="meta" class="meta"></div>
+      <div id="flow" class="flow"></div>
+      <div class="detail-grid">
+        <div class="box">
+          <h2>Source Evidence</h2>
+          <ul id="sources"></ul>
+        </div>
+        <div class="box">
+          <h2>Dependencies</h2>
+          <div id="deps"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const modules = [
+      ["mcde-degilding", null, "MCDE 褪金台", "MCDE Degilding", "Fabric add-on for removing selected MCDE gilded enchantments.", [], []],
+      ["mcde-degilding.build", "mcde-degilding", "构建", "Build", "Configures the two supported Minecraft build targets.", [], []],
+      ["mcde-degilding.build.targets", "mcde-degilding.build", "多版本构建目标", "Multi-version build targets", "Selects matching Minecraft, Java, Fabric API, and MCDE dependencies.", ["build.gradle", "gradle.properties", "settings.gradle"], []],
+      ["mcde-degilding.bootstrap", "mcde-degilding", "启动与注册", "Bootstrap and registration", "Connects Fabric entry points and runtime registration.", [], []],
+      ["mcde-degilding.bootstrap.common", "mcde-degilding.bootstrap", "服务端启动入口", "Common initialization entry point", "Registers blocks, block entities, and screen handlers.", ["src/main/java/.../McdeDegilding.java", "src/1.21.1/java/.../McdeDegilding.java"], ["registries.blocks", "registries.block-entities", "registries.screen-handlers"]],
+      ["mcde-degilding.bootstrap.client", "mcde-degilding.bootstrap", "客户端启动入口", "Client initialization entry point", "Binds the synchronized handler type to the custom client screen.", ["src/main/java/.../McdeDegildingClient.java", "src/1.21.1/java/.../McdeDegildingClient.java"], ["interface.client.rendering"]],
+      ["mcde-degilding.bootstrap.registries", "mcde-degilding.bootstrap", "运行时注册表", "Runtime registries", "Registers the block, inventory block entity, and screen handler type.", [], []],
+      ["mcde-degilding.bootstrap.registries.blocks", "mcde-degilding.bootstrap.registries", "褪金台方块注册", "Degilding Table block registration", "Registers the non-opaque block and its functional item.", ["src/main/java/.../registry/ModBlocks.java"], ["gameplay.table.block"]],
+      ["mcde-degilding.bootstrap.registries.block-entities", "mcde-degilding.bootstrap.registries", "方块实体注册", "Block entity registration", "Registers the two-slot persistent table inventory.", ["src/main/java/.../registry/ModBlockEntities.java"], ["gameplay.table.storage"]],
+      ["mcde-degilding.bootstrap.registries.screen-handlers", "mcde-degilding.bootstrap.registries", "界面处理器注册", "Screen handler registration", "Registers the synchronized server container type.", ["src/main/java/.../registry/ModScreenHandlers.java"], ["interface.handler.slots"]],
+      ["mcde-degilding.gameplay", "mcde-degilding", "游戏玩法", "Gameplay", "World block behavior, persistent storage, and mining rules.", [], []],
+      ["mcde-degilding.gameplay.table", "mcde-degilding.gameplay", "褪金台容器", "Degilding Table container", "Combines the world block and its persistent inventory.", [], []],
+      ["mcde-degilding.gameplay.table.block", "mcde-degilding.gameplay.table", "世界方块行为", "World block behavior", "Opens the menu, matches a 13/16 block shape, and scatters contents when broken.", ["src/main/java/.../block/DegildingTableBlock.java"], ["gameplay.table.storage", "interface.handler.slots"]],
+      ["mcde-degilding.gameplay.table.storage", "mcde-degilding.gameplay.table", "持久化库存", "Persistent inventory", "Stores equipment and iron ingots with NBT persistence.", ["src/main/java/.../block/entity/DegildingTableBlockEntity.java"], ["interface.handler.slots"]],
+      ["mcde-degilding.gameplay.mining", "mcde-degilding.gameplay", "挖掘速度规则", "Mining speed policy", "Makes the table hand-mineable and faster with higher pickaxe tiers.", ["src/main/java/.../mixin/DegildingTableMiningMixin.java"], ["registries.blocks"]],
+      ["mcde-degilding.interface", "mcde-degilding", "褪金界面", "Degilding interface", "Server validation and transaction logic with a client Dungeon-style GUI.", [], []],
+      ["mcde-degilding.interface.handler", "mcde-degilding.interface", "服务端容器处理器", "Server container handler", "Owns slot constraints, confirmation, material consumption, and lifecycle resets.", [], []],
+      ["mcde-degilding.interface.handler.slots", "mcde-degilding.interface.handler", "槽位与镀金枚举", "Slots and gilding discovery", "Constrains inputs and extracts gilded enchantment IDs from MCDE.", ["src/main/java/.../screen/DegildingScreenHandler.java"], []],
+      ["mcde-degilding.interface.handler.transaction", "mcde-degilding.interface.handler", "褪金确认事务", "Degilding confirmation transaction", "Uses same-entry double click within five seconds and consumes 16 iron ingots.", ["src/main/java/.../screen/DegildingScreenHandler.java"], ["handler.slots", "gameplay.table.storage"]],
+      ["mcde-degilding.interface.handler.lifecycle", "mcde-degilding.interface.handler", "确认状态生命周期", "Confirmation state lifecycle", "Resets pending confirmation after every other operation or timeout.", ["src/main/java/.../screen/DegildingScreenHandler.java"], ["handler.transaction", "gameplay.table.storage"]],
+      ["mcde-degilding.interface.client", "mcde-degilding.interface", "客户端界面", "Client screen", "Renders and interacts with the gilding list.", [], []],
+      ["mcde-degilding.interface.client.rendering", "mcde-degilding.interface.client", "界面绘制与提示", "Screen rendering and tooltips", "Draws the custom layout, icons, disabled states, and tooltips.", ["src/main/java/.../screen/DegildingScreen.java", "textures/gui/degilding_table.png"], ["handler.slots", "content.assets.gui"]],
+      ["mcde-degilding.interface.client.interaction", "mcde-degilding.interface.client", "列表交互与滚动", "List interaction and scrolling", "Handles list selection, scroll wheel, draggable scrollbar, and cancellation.", ["src/main/java/.../screen/DegildingScreen.java"], ["handler.transaction", "handler.lifecycle"]],
+      ["mcde-degilding.content", "mcde-degilding", "内容与资源", "Content and resources", "Recipes, drops, models, textures, localization, and metadata.", [], []],
+      ["mcde-degilding.content.data", "mcde-degilding.content", "数据包内容", "Data pack content", "Defines recipe, drops, and mining tag.", [], []],
+      ["mcde-degilding.content.data.recipe", "mcde-degilding.content.data", "褪金台合成配方", "Degilding Table crafting recipe", "One amethyst shard centered above three deepslate blocks.", ["data/mcde_degilding/recipes/degilding_table.json"], []],
+      ["mcde-degilding.content.data.drops", "mcde-degilding.content.data", "掉落与工具标签", "Drops and tool tag", "Defines self-drop and pickaxe mining tag.", ["data/.../loot_tables/blocks/degilding_table.json", "data/minecraft/tags/block/mineable/pickaxe.json"], []],
+      ["mcde-degilding.content.assets", "mcde-degilding.content", "客户端资产", "Client assets", "Models, textures, GUI background, and localization.", [], []],
+      ["mcde-degilding.content.assets.models", "mcde-degilding.content.assets", "方块与物品模型", "Block and item models", "Defines the 3D purple-gold rune table and held item model.", ["assets/.../models/block/degilding_table.json"], []],
+      ["mcde-degilding.content.assets.textures", "mcde-degilding.content.assets", "方块纹理与图标", "Block textures and icon", "Provides base, rune, trim textures and mod icon.", ["assets/.../textures/block/*.png", "assets/mcde_degilding/icon.png"], []],
+      ["mcde-degilding.content.assets.gui", "mcde-degilding.content.assets", "褪金台界面贴图", "Degilding Table GUI texture", "Supplies the background for the table UI and player inventory strip.", ["assets/.../textures/gui/degilding_table.png"], []],
+      ["mcde-degilding.content.assets.localization", "mcde-degilding.content.assets", "本地化文本", "Localization text", "Provides English and Simplified Chinese text.", ["assets/.../lang/en_us.json", "assets/.../lang/zh_cn.json"], []],
+      ["mcde-degilding.content.metadata", "mcde-degilding.content", "Fabric 元数据与 Mixin 配置", "Fabric metadata and Mixin configuration", "Declares entry points, dependencies, mod icon, and the mining mixin.", ["fabric.mod.json", "mcde_degilding.mixins.json"], ["gameplay.mining", "bootstrap.common", "bootstrap.client"]],
+      ["mcde-degilding.documentation", "mcde-degilding", "项目说明", "Project documentation", "Bilingual Modrinth description and build guides.", ["description.md", "README.md", "README.zh-CN.md"], []]
+    ].map(([id, parent, zh, en, desc, sources, deps]) => ({ id, parent, zh, en, desc, sources, deps }));
+
+    const byId = new Map(modules.map(module => [module.id, module]));
+    const parents = new Set(modules.map(module => module.parent).filter(Boolean));
+    const tree = document.querySelector("#tree");
+    const title = document.querySelector("#title");
+    const path = document.querySelector("#path");
+    const english = document.querySelector("#english");
+    const meta = document.querySelector("#meta");
+    const sources = document.querySelector("#sources");
+    const deps = document.querySelector("#deps");
+    const flow = document.querySelector("#flow");
+
+    function renderList(parent, depth = 0) {
+      modules.filter(module => module.parent === parent).forEach(module => {
+        const button = document.createElement("button");
+        button.className = `node ${parents.has(module.id) ? "" : "leaf"}`;
+        button.style.paddingLeft = `${8 + depth * 16}px`;
+        button.innerHTML = `<span class="dot"></span><span>${module.zh}</span><span class="code">${module.id.split(".").at(-1)}</span>`;
+        button.addEventListener("click", () => select(module.id, button));
+        tree.append(button);
+        renderList(module.id, depth + 1);
+      });
+    }
+
+    function select(id, button) {
+      const module = byId.get(id);
+      document.querySelectorAll(".node").forEach(node => node.classList.remove("active"));
+      button?.classList.add("active");
+      path.textContent = module.id;
+      title.textContent = module.zh;
+      english.textContent = module.en + " - " + module.desc;
+      meta.innerHTML = "";
+      [["State", "active"], ["Type", parents.has(id) ? "container" : "leaf"], ["Sources", module.sources.length]].forEach(([name, value]) => {
+        const chip = document.createElement("span");
+        chip.className = "chip";
+        chip.textContent = `${name}: ${value}`;
+        meta.append(chip);
+      });
+      sources.innerHTML = module.sources.length
+        ? module.sources.map(source => `<li><code>${source}</code></li>`).join("")
+        : "<li>Container module; evidence belongs to its children.</li>";
+      deps.innerHTML = module.deps.length
+        ? module.deps.map(dep => `<div class="edge"><code>mcde-degilding.${dep.replace(/^mcde-degilding\./, "")}</code></div>`).join("")
+        : "<p style='color: var(--muted)'>No direct outgoing dependency.</p>";
+      const children = modules.filter(child => child.parent === id);
+      flow.innerHTML = children.length
+        ? children.map(child => `<div class="flow-card"><strong>${child.zh}</strong><span>${child.en}</span></div>`).join("")
+        : `<div class="flow-card"><strong>Leaf module</strong><span>This node owns its API contract and source evidence.</span></div>`;
+    }
+
+    renderList(null);
+    select("mcde-degilding", document.querySelector(".node"));
+  </script>
+</body>
+</html>

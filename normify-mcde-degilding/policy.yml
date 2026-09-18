@@ -1,0 +1,11 @@
+version: 1
+rules:
+  - id: core-acyclic
+    type: acyclic
+    severity: error
+    description: Module dependency edges must not form a cycle.
+  - id: module-id-style
+    type: naming
+    severity: error
+    pattern: "^[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)*$"
+    description: Module ids use lower-case path segments separated by dots.

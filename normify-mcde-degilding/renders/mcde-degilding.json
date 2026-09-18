@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "mcde-degilding",
+  "mode": "groups",
+  "order": [
+    "mcde-degilding.build",
+    "mcde-degilding.bootstrap",
+    "mcde-degilding.gameplay",
+    "mcde-degilding.interface",
+    "mcde-degilding.content",
+    "mcde-degilding.documentation"
+  ],
+  "groups": [
+    { "id": "foundation", "title": { "zh": "基础", "en": "Foundation" }, "children": ["mcde-degilding.build", "mcde-degilding.bootstrap"] },
+    { "id": "runtime", "title": { "zh": "运行时", "en": "Runtime" }, "children": ["mcde-degilding.gameplay", "mcde-degilding.interface"] },
+    { "id": "delivery", "title": { "zh": "交付", "en": "Delivery" }, "children": ["mcde-degilding.content", "mcde-degilding.documentation"] }
+  ],
+  "reading": { "zh": "从构建与注册开始，经过世界容器和褪金交互，最后查看数据资产与文档。", "en": "Read from build and registration through world/container interaction, then data assets and documentation." }
+}

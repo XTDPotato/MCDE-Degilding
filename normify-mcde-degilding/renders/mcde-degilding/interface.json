@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "id": "mcde-degilding.interface",
+  "mode": "layers",
+  "order": ["mcde-degilding.interface.client", "mcde-degilding.interface.handler"],
+  "reading": { "zh": "客户端负责显示与输入；服务端处理器负责验证、确认和实际褪金。", "en": "The client handles display and input; the server handler validates, confirms, and performs the actual degilding." }
+}

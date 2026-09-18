@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "id": "mcde-degilding.gameplay",
+  "mode": "layers",
+  "order": ["mcde-degilding.gameplay.table", "mcde-degilding.gameplay.mining"],
+  "reading": { "zh": "先查看方块和库存容器，再查看用于挖掘速度的独立 Mixin。", "en": "Review the block and inventory container first, then the independent mining-speed Mixin." }
+}

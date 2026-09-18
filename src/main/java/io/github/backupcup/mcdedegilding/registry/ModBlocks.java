@@ -21,7 +21,8 @@ public final class ModBlocks {
         new DegildingTableBlock(AbstractBlock.Settings.create()
             .mapColor(MapColor.GOLD)
             .strength(1.0F, 6.0F)
-            .sounds(BlockSoundGroup.STONE))
+            .sounds(BlockSoundGroup.STONE)
+            .nonOpaque())
     );
 
     public static final Item DEGILDING_TABLE_ITEM = Registry.register(

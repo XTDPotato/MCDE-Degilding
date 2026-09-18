@@ -4,7 +4,8 @@
 
 > Vibe Coding project powered by GPT6 Astra.
 
-Minecraft 1.20.1 Fabric add-on for MC Dungeons: Enchanting (MCDE).
+Fabric add-on for MC Dungeons: Enchanting (MCDE), supporting Minecraft 1.20.1
+and 1.21.1.
 
 The Degilding Table lets players insert an item with MCDE gilding and remove
 one selected gilded enchantment. Each removal consumes 16 iron ingots in
@@ -17,28 +18,40 @@ descriptions.
 
 ## Building From Source
 
-This project targets Minecraft 1.20.1 with Fabric Loom and requires Java 17.
-The MCDE dependency is not redistributed in this repository. For a local
-build, place `mcde-1.6.4-1.20.jar` in `libs/`, then run:
+This project has separate Fabric targets for each supported game version. The
+MCDE dependency is not redistributed in this repository. Place both required
+MCDE JARs in `libs/`:
 
 ```text
-./gradlew build
+mcde-1.6.4-1.20.jar
+mcde-1.6.4-1.21.jar
 ```
 
-The output is written to `build/libs/mcde-degilding-1.0.0.jar`.
+Build the desired target:
+
+```text
+./gradlew build -PtargetMinecraft=1.20.1
+./gradlew build -PtargetMinecraft=1.21.1
+```
+
+| Game version | Java | MCDE dependency | Fabric API |
+| --- | --- | --- | --- |
+| 1.20.1 | 17 | `1.6.4-1.20` | `0.92.2+1.20.1` or compatible |
+| 1.21.1 | 21 | `1.6.4-1.21` | `0.116.17+1.21.1` or compatible |
+
+The output is written to `build/libs/` with its game version in the file name.
 
 ## Required Installation
 
-Place all of the following in the same Fabric 1.20.1 instance's `mods` folder:
+Place the matching files in the same Fabric instance's `mods` folder:
 
 - Fabric Loader 0.16.5 or newer
-- Fabric API 0.92.2+1.20.1 or compatible
-- MC Dungeons: Enchanting `1.6.4-1.20`
-- `mcde-degilding-1.0.0.jar`
+- The Fabric API and MCDE version shown in the table above
+- The matching MCDE Degilding JAR from the release
 
-This release does not run in NeoForge 1.21.1. It is an add-on, so it does not
-bundle MCDE's own enchantments, items, or blocks; the original MCDE JAR must
-also be installed.
+This is Fabric-only and does not run in NeoForge. It is an add-on, so it does
+not bundle MCDE's own enchantments, items, or blocks; the matching original
+MCDE JAR must also be installed.
 
 ## Project Credits
 

@@ -4,7 +4,8 @@
 
 > Vibe Coding 项目，由 GPT6 Astra 协作完成。
 
-这是一个适用于 Minecraft 1.20.1 Fabric 的 MC Dungeons: Enchanting（MCDE）附属模组。
+这是一个适用于 Minecraft 1.20.1 与 1.21.1 Fabric 的 MC Dungeons:
+Enchanting（MCDE）附属模组。
 
 褪金台允许玩家放入带有 MCDE 镀金附魔的物品，并选择移除其中一个镀金附魔。在生存模式下，每次移除需要消耗 16 个铁锭。其他附魔和符文槽会保持不变。选择列表使用 MCDE 的地下城风格附魔图标。
 
@@ -12,30 +13,38 @@
 
 ## 从源码构建
 
-项目目标为 Minecraft 1.20.1，使用 Fabric Loom，并需要 Java 17。
+项目为每个支持的游戏版本提供独立 Fabric 构建目标。
 
-仓库不再分发 MCDE 依赖。构建前请将 `mcde-1.6.4-1.20.jar` 放入 `libs/`，然后执行：
-
-```text
-./gradlew build
-```
-
-构建产物位于：
+仓库不再分发 MCDE 依赖。构建前请将以下两个 JAR 放入 `libs/`：
 
 ```text
-build/libs/mcde-degilding-1.0.0.jar
+mcde-1.6.4-1.20.jar
+mcde-1.6.4-1.21.jar
 ```
+
+按目标版本构建：
+
+```text
+./gradlew build -PtargetMinecraft=1.20.1
+./gradlew build -PtargetMinecraft=1.21.1
+```
+
+| 游戏版本 | Java | MCDE 依赖 | Fabric API |
+| --- | --- | --- | --- |
+| 1.20.1 | 17 | `1.6.4-1.20` | `0.92.2+1.20.1` 或兼容版本 |
+| 1.21.1 | 21 | `1.6.4-1.21` | `0.116.17+1.21.1` 或兼容版本 |
+
+构建产物位于 `build/libs/`，文件名会包含对应的游戏版本。
 
 ## 安装要求
 
-请将以下文件放入同一个 Fabric 1.20.1 实例的 `mods` 文件夹：
+请将以下对应版本的文件放入同一个 Fabric 实例的 `mods` 文件夹：
 
 - Fabric Loader 0.16.5 或更高版本
-- Fabric API 0.92.2+1.20.1 或兼容版本
-- MC Dungeons: Enchanting `1.6.4-1.20`
-- `mcde-degilding-1.0.0.jar`
+- 上表列出的 Fabric API 与 MCDE 版本
+- Release 中与游戏版本对应的 MCDE 褪金台 JAR
 
-本版本不适用于 NeoForge 1.21.1。它是附属模组，不包含 MCDE 自身的附魔、物品或方块，因此仍需要安装原版 MCDE JAR。
+本模组仅支持 Fabric，不适用于 NeoForge。它是附属模组，不包含 MCDE 自身的附魔、物品或方块，因此仍需要安装对应版本的原版 MCDE JAR。
 
 ## 项目署名
 

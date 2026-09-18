@@ -20,9 +20,9 @@
   },
   "depends": {
     "fabricloader": ">=0.16.5",
-    "fabric-api": ">=0.92.2+1.20.1",
-    "minecraft": "1.20.1",
-    "java": ">=17",
-    "mcde": "1.6.4-1.20"
+    "fabric-api": ">=${fabric_api_version}",
+    "minecraft": "${minecraft_version}",
+    "java": ">=${java_version}",
+    "mcde": "${mcde_version}"
   }
 }

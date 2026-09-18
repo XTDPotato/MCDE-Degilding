@@ -1,5 +1,9 @@
 # MCDE Degilding
 
+[简体中文](README.zh-CN.md) | English
+
+> Vibe Coding project powered by GPT6 Astra.
+
 Minecraft 1.20.1 Fabric add-on for MC Dungeons: Enchanting (MCDE).
 
 The Degilding Table lets players insert an item with MCDE gilding and remove
@@ -35,3 +39,9 @@ Place all of the following in the same Fabric 1.20.1 instance's `mods` folder:
 This release does not run in NeoForge 1.21.1. It is an add-on, so it does not
 bundle MCDE's own enchantments, items, or blocks; the original MCDE JAR must
 also be installed.
+
+## Project Credits
+
+- Development style: Vibe Coding
+- AI collaborator: GPT6 Astra
+- License: MIT
